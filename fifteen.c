@@ -156,7 +156,7 @@ void greet(void)
  */
 void init(void)
 {
-    // Hopefully complete
+    // Done and done
     int grid[d][d];
     int i,j;
     int temp = d*d - 1;
