@@ -32,7 +32,7 @@ int d;
 // prototypes
 void clear(void);
 void greet(void);
-void init(int dim);
+void init(void);
 void draw(void);
 bool move(int tile);
 bool won(void);
@@ -65,8 +65,8 @@ int main(int argc, string argv[])
     greet();
 
     // initialize the board
-    printf ("%d\t%d\n", d, d%2);
-    init(d);
+    printf ("%d\t %d \n", d, d%2);
+    init();
 
     // accept moves until game is won
     while (true)
@@ -154,18 +154,18 @@ void greet(void)
  * Initializes the game's board with tiles numbered 1 through d*d - 1
  * (i.e., fills 2D array with values but does not actually print them).  
  */
-void init(int dim)
+void init(void)
 {
     // TODO
-    int grid[dim][dim];
+    int grid[d][d];
     int i,j;
-    int temp = dim*dim - 1;
+    int temp = d*d - 1;
     //int temp2 = (dim +1) % 2;
 
     // Creates matrix in descending order
-    for(i=0; i<dim ; i++)
+    for(i=0; i<d ; i++)
     {
-        for(j=0;j<dim;j++)
+        for(j=0;j<d;j++)
         {
             //else
             //{
@@ -176,16 +176,16 @@ void init(int dim)
     }
 
     //checks for and correct even dimention matrix
-    // if((temp2) != 0)
-    // {
-    //             grid[dim-1][dim-3] = 1;
-    //             grid[dim-1][dim-2] = 2;
-    // }
+    if(( d%2 ) == 0)
+    {
+                grid[d-1][d-3] = 1;
+                grid[d-1][d-2] = 2;
+    }
     //grid[i][j] = '\0';
 
-    for(i=0; i<dim ; i++)
+    for(i=0; i<d ; i++)
     {
-        for(j=0;j<dim;j++)
+        for(j=0;j<d;j++)
         {
             printf("%d\t", grid[i][j]);
         }
