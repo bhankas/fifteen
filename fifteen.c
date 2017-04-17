@@ -156,32 +156,27 @@ void greet(void)
  */
 void init(void)
 {
-    // TODO
+    // Hopefully complete
     int grid[d][d];
     int i,j;
     int temp = d*d - 1;
-    //int temp2 = (dim +1) % 2;
 
     // Creates matrix in descending order
     for(i=0; i<d ; i++)
     {
         for(j=0;j<d;j++)
         {
-            //else
-            //{
-                grid[i][j] = temp;
-                temp--;
-            //}
+            grid[i][j] = temp;
+            temp--;
          }         
     }
 
-    //checks for and correct even dimention matrix
+    //check for and correct even dimention matrix
     if(( d%2 ) == 0)
     {
                 grid[d-1][d-3] = 1;
                 grid[d-1][d-2] = 2;
     }
-    //grid[i][j] = '\0';
 
     for(i=0; i<d ; i++)
     {
