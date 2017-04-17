@@ -176,15 +176,6 @@ void init(void)
     {
                 grid[d-1][d-3] = 1;
                 grid[d-1][d-2] = 2;
-    }
-
-    for(i=0; i<d ; i++)
-    {
-        for(j=0;j<d;j++)
-        {
-            printf("%d\t", grid[i][j]);
-        }
-        printf("\n");
     }  
 }
 
@@ -194,8 +185,14 @@ void init(void)
 void draw(void)
 {
     // TODO :INCOMPLETE/ DO NOT KEEP
-
-      
+    for(i=0; i<d ; i++)
+    {
+        for(j=0;j<d;j++)
+        {
+            printf("%d\t", grid[i][j]);
+        }
+        printf("\n");
+    }      
 }
 
 /**
