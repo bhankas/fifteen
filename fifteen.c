@@ -160,7 +160,7 @@ void init(int dim)
     int grid[dim][dim];
     int i,j;
     int temp = dim*dim - 1;
-    int temp2 = dim % 2;
+    //int temp2 = (dim +1) % 2;
 
     // Creates matrix in descending order
     for(i=0; i<dim ; i++)
@@ -172,16 +172,15 @@ void init(int dim)
                 grid[i][j] = temp;
                 temp--;
             //}
-         }
-         
+         }         
     }
 
     //checks for and correct even dimention matrix
-    if((temp2)==0)
-    {
-                grid[dim-1][dim-3] = 1;
-                grid[dim-1][dim-2] = 2;
-    }
+    // if((temp2) != 0)
+    // {
+    //             grid[dim-1][dim-3] = 1;
+    //             grid[dim-1][dim-2] = 2;
+    // }
     //grid[i][j] = '\0';
 
     for(i=0; i<dim ; i++)
