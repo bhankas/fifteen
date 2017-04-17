@@ -72,7 +72,7 @@ int main(int argc, string argv[])
     while (true)
     {
         // clear the screen
-        //clear();
+        clear();
 
         // draw the current state of the board
         draw();
@@ -157,7 +157,6 @@ void greet(void)
 void init(void)
 {
     // Done and done
-    int grid[d][d];
     int i,j;
     int temp = d*d - 1;
 
@@ -166,7 +165,7 @@ void init(void)
     {
         for(j=0;j<d;j++)
         {
-            grid[i][j] = temp;
+            board[i][j] = temp;
             temp--;
          }         
     }
@@ -174,8 +173,8 @@ void init(void)
     //check for and correct even dimention matrix
     if(( d%2 ) == 0)
     {
-                grid[d-1][d-3] = 1;
-                grid[d-1][d-2] = 2;
+                board[d-1][d-3] = 1;
+                board[d-1][d-2] = 2;
     }  
 }
 
@@ -185,11 +184,20 @@ void init(void)
 void draw(void)
 {
     // TODO :INCOMPLETE/ DO NOT KEEP
+    int i,j;
+    
     for(i=0; i<d ; i++)
     {
         for(j=0;j<d;j++)
         {
-            printf("%d\t", grid[i][j]);
+            if(board[i][j] !=0)
+            {
+                printf("%2i\t", board[i][j]);
+            }
+            else
+            {
+                printf(" _\t");
+            }
         }
         printf("\n");
     }      
