@@ -262,11 +262,11 @@ bool won(void)
             if(board[i][j] == check)
             {
                 count++;
-                check++;
             }
+            check++;
         }
     }
-    if (count == d*d)
+    if (count == d*d && board[i][j] == 0)
     {
         return true;
     }
