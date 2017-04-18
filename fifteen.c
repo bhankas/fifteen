@@ -28,6 +28,8 @@ int board[DIM_MAX][DIM_MAX];
 
 // dimensions
 int d;
+int posx;
+int posy;
 
 // prototypes
 void clear(void);
@@ -65,7 +67,6 @@ int main(int argc, string argv[])
     greet();
 
     // initialize the board
-    printf ("%d\t %d \n", d, d%2);
     init();
 
     // accept moves until game is won
@@ -167,15 +168,18 @@ void init(void)
         {
             board[i][j] = temp;
             temp--;
-         }         
+        }         
     }
 
     //check for and correct even dimention matrix
     if(( d%2 ) == 0)
     {
-                board[d-1][d-3] = 1;
-                board[d-1][d-2] = 2;
-    }  
+        board[d-1][d-3] = 1;
+        board[d-1][d-2] = 2;
+    }
+
+    posx = d-1;
+    posy = d-1;  
 }
 
 /**
@@ -183,7 +187,7 @@ void init(void)
  */
 void draw(void)
 {
-    // TODO :INCOMPLETE/ DO NOT KEEP
+    // Complete
     int i,j;
     
     for(i=0; i<d ; i++)
@@ -209,7 +213,30 @@ void draw(void)
  */
 bool move(int tile)
 {
-    // TODO
+    // Complete
+    int i,j;
+    
+    for(i=0; i<d ; i++)
+    {
+        for(j=0;j<d;j++)
+        {
+            // Check if current pos contains tile value & if it is exactly on side of current empty tile
+             if(board[i][j] == tile && ((abs(posx - i) == 1 && abs(posy - j) ==0) || (abs(posx - i) == 0 && abs(posy - j) ==1)))
+             {
+                 //swap tile with empty tile
+                 board[posx][posy] = tile;
+                 board[i][j] = 0;
+                //save position of empty tile for next input
+                 posx = i;
+                 posy = j;
+
+                 return true;
+             }
+
+
+        }
+    }
+
     return false;
 }
 
@@ -219,6 +246,33 @@ bool move(int tile)
  */
 bool won(void)
 {
-    // TODO
-    return false;
+    // Hopefully Complete
+
+    int i,j;
+    //This value should be on next tile value on next tile
+    int count = 1;
+    //How many tiles are checked correct
+    int check = 1;
+    
+    for(i=0; i<d ; i++)
+    {
+        for(j=0;j<d;j++)
+        {
+            //Check if current value matches supposed value, if yes increment next value and correct checks
+            if(board[i][j] == check)
+            {
+                count++;
+                check++;
+            }
+        }
+    }
+    if (count == d*d)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    //return false;
 }
